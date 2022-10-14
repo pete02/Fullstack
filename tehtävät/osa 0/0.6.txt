@@ -1,0 +1,3 @@
+selain-> kirjopittaa noten, ja painaa send
+selain-> palvelin HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa payload new note
+JS tallentaa noten notes listaan, ja piirtää listan uudelleen

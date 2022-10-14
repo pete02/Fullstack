@@ -1,0 +1,15 @@
+selain-> kirjoitetaan uusi note, ja painetaan send
+selain->palvelin HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note, payload uuden noten arvo
+selain->palvelin HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+palvelin->selain html-koodi
+selain->palvelin HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-selain CSS-koodi
+selain->palvelin HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+palvelin->selain JS-koodi
+
+selain alkaa suorittamaan javascriptiä
+js-> HTTP GET "/exampleapp/data.json"
+palvelin-> selain JSON-vastaus
+js->parse JSON-data
+js-> js generate note list
+selain-> näyttää note listin
