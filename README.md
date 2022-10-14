@@ -1,2 +1,2 @@
 FULLSTACK
-kurssitehtävä löytyy tehtävien alta
+kurssitehtävät löytyy tehtävien alta
