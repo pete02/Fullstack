@@ -3,7 +3,7 @@ import Person from './components/persons'
 import Filter from './components/filter'
 import ShowPersons from './components/showPersons'
 import PersonSer from './services/persons.js'
-let error=false
+let err=false
 const App = () => {
 
   const [persons, setPersons] = useState([])
@@ -21,7 +21,7 @@ const App = () => {
         setPersons(response.data)
         setShowPersons(response.data)
       }).catch(()=>{
-        error=true
+        err=true
         setNot(`No connection of server`)
         
     })
@@ -40,7 +40,7 @@ const App = () => {
             setShowPersons(response.data)
           })
         }).catch(error=>{
-          error=true
+          err=true
           setNot(`Info of ${person.name} has already been removed from server`)
           
         })
@@ -50,9 +50,15 @@ const App = () => {
         name:newName,
         number:newNumber
       }
-        PersonSer.create(newperson).then(response=>personSet(response.data))
-        error=false
-        setNot(`Added ${newName}`)
+        PersonSer.create(newperson).then(response=>{
+          personSet(response.data)
+          err=false
+          setNot(`Added ${newName}`)
+        }).catch(error=>{
+          err=true
+          setNot(error.response.data.error)
+        })
+        
     }   
 
   }
@@ -64,7 +70,7 @@ const App = () => {
         setNot(`Deleted ${person.name}`)
         PersonSer.getAll().then(response=>setShowPersons(response.data))
      }).catch(()=>{
-      error=true
+      err=true
       setNot(`Info of ${person.name} has already been removed from server`)
     })
      
@@ -91,7 +97,7 @@ const App = () => {
     if (message === null) {
       return null
     }
-    if(error){
+    if(err){
       return (
         <div className="error">
           {message}
