@@ -4,7 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const config = require('./utils/config')
 const blogRouter= require('./controllers/blog')
-const blogSchema = require('./models/blog')
+
 
 
 const mongoUrl = config.MONGODB_URI
